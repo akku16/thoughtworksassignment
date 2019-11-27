@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web1:
+    image: uat_web
+    ports:
+      - 8080
+    volumes:
+      - ../data:/Users/akshar/persistence
+  web2:
+    image: uat_web
+    ports:
+      - 8080
+    volumes:
+      - ../data:/Users/akshar/persistence
+  static:
+    build: ./static/
+    links:
+      - web1
+      - web2
+    ports:
+      - 80:80
